@@ -2,11 +2,12 @@
 
 
 @extends('plantillas/plantilla2')
-{{--  --}}
-@extends('inicio2') 
+
 {{-- CONTENIDO1 --}}
-@section('contenido')
+@section('contenido1')
+
     @include('Alumnos2/tablahtml')
+    
 @endsection
 
 
@@ -48,6 +49,7 @@
     </div>
   </div>
 
+      
     <div class="row mb-3">
       <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
       <div class="col-sm-9">
@@ -67,9 +69,9 @@
         @enderror
         </div>
       </div>
-    
+
       <div class="row mb-3">
-        <label for="apellidoM" class="col-sm-3 col-form-label">Apellido Materno</label>
+        <label for="apellidoP" class="col-sm-3 col-form-label">Apellido Materno</label>
         <div class="col-sm-9">
           <input type="text" class="form-control" id="apellidoM" name="apellidoM" value="{{old('apellidoM',$alumno->apellidoM)}}" {{$des}}>
           @error('apellidoM')
