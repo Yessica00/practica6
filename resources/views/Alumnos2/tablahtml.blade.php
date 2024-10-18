@@ -5,7 +5,7 @@
     <p>{{$mensaje}}</p>
 @endisset
 
-<a href="{{route('Alumnos.create')}}" class="btn btn-dark mb-3" role="button">
+<a href="{{route('Alumnos2.create')}}" class="btn btn-dark mb-3" role="button">
     <i class="fas fa-plus"></i> Insertar
     
 </a>
@@ -34,17 +34,17 @@
                 <td>{{ $alumno->apellidoM }}</td>
                 <td>{{ $alumno->sexo }}</td>
                 <td>
-                    <a href="{{route('Alumnos.edit',$alumno->id)}}" class="btn btn-success">
+                    <a href="{{route('Alumnos2.edit',$alumno->id)}}" class="btn btn-success">
                         <i class="fas fa-edit"></i> Editar
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('Alumnos.show',$alumno->id)}}" class="btn btn-danger">
+                    <a href="{{route('Alumnos2.show',$alumno->id)}}" class="btn btn-danger">
                         <i class="fas fa-trash-alt"></i> Eliminar
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('Alumnos.show',$alumno->id)}}" class="btn btn-primary">
+                    <a href="{{route('Alumnos2.show',$alumno->id)}}" class="btn btn-primary">
                         <i class="fas fa-eye"></i> Ver
                     </a>
                 </td>

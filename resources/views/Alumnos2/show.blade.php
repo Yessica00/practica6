@@ -3,7 +3,7 @@
 {{-- CONTENIDO1 --}}
 @section('contenido')
 
-    @include('Alumnos/tablahtml')
+    @include('Alumnos2/tablahtml')
     
 @endsection
 
@@ -11,7 +11,7 @@
 {{-- CONTENIDO2 --}}
 @section('contenido2')
 <h1>VER TDOOS LOS DATOS</h1>
-<form action="{{route('Alumnos.destroy',$alumno)}}" method="POST">
+<form action="{{route('Alumnos2.destroy',$alumno)}}" method="POST">
   @csrf 
     <div class="row mb-3">
       <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
@@ -34,7 +34,7 @@
         </div>
       </div>
     <button type="submit" class="btn btn-danger">Confirma la Eliminacion</button>
-    <a href="{{route('Alumnos.index')}}" class="btn btn-primary">Regresar</a>
+    <a href="{{route('Alumnos2.index')}}" class="btn btn-primary">Regresar</a>
     
   </form>
 

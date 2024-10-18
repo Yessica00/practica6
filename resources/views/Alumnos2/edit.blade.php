@@ -3,7 +3,7 @@
 {{-- CONTENIDO1 --}}
 @section('contenido')
 
-    @include('Alumnos/tablahtml')
+    @include('Alumnos2/tablahtml')
     
 @endsection
 
@@ -11,7 +11,7 @@
 {{-- CONTENIDO2 --}}
 @section('contenido2')
 <h1>Editando</h1>
-<form action="{{route('Alumnos.update',$alumno->id)}}" method="POST">
+<form action="{{route('Alumnos2.update',$alumno->id)}}" method="POST">
   @csrf
    
 
