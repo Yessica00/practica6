@@ -1,5 +1,4 @@
- <!-- Nav tabs -->
-@extends('catalogo')
+
  <ul
  class="nav nav-tabs"
  id="navId"
