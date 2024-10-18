@@ -2,9 +2,7 @@
 
 {{-- CONTENIDO1 --}}
 @section('contenido')
-
     @include('Alumnos2/tablahtml')
-    
 @endsection
 
 
