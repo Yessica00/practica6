@@ -1,6 +1,9 @@
 @extends('plantillas/plantilla1')
 
-@section('contenido1')
+@section('contenido')
     @include('Alumnos2/tablahtml')
 @endsection
+
+
+ 
 
