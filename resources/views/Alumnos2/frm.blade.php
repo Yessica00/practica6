@@ -8,7 +8,6 @@
 @endsection
 
 
-
 {{-- CONTENIDO2 --}}
 @section('contenido2')
 
