@@ -8,6 +8,7 @@
 <a href="{{route('Plazas.create')}}" class="btn btn-dark mb-3" role="button">
     <i class="fas fa-plus"></i> Insertar
 </a>
+
 <div class="table-md">
     <table class="table table-hover table-striped">
         <thead class="thead-dark">
@@ -23,7 +24,6 @@
         <tbody>
             @foreach ($plazas as $plaza)
             <tr>
-                
                 <td scope="row"> {{ $plaza->id }}  </td>
                 <td scope="row">{{ $plaza->idPlaza }}  </td>
                 <td scope="row">{{ $plaza->nombrePlaza }}  </td>
@@ -46,5 +46,9 @@
             @endforeach
         </tbody>
     </table>
-    {{ $plazas->links('pagination::bootstrap-4', ['class' => 'pagination-sm']) }}
+
+    <!-- Centrado de la paginación -->
+    <div class="d-flex justify-content-center">
+        {{ $plazas->links('pagination::bootstrap-4', ['class' => 'pagination-sm']) }}
+    </div>
 </div>
