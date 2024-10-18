@@ -1,8 +1,5 @@
+@extends('inicio2')
 
-@extends('plantillas/plantilla2')
-
-@section('contenido')
+@section('contenido1')
     @include('Puestos/tablahtml')
 @endsection
-
- 

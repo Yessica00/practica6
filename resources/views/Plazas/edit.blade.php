@@ -1,12 +1,11 @@
-@extends('inicio2')
+@extends('plantillas/plantilla2')
 
 {{-- CONTENIDO1 --}}
-@section('contenido')
+@section('contenido1')
 
-    @include('Plazas/tablahtml')
+    @include('Alumnos2/tablahtml')
     
 @endsection
-
 
 {{-- CONTENIDO2 --}}
 @section('contenido2')

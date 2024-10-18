@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +24,17 @@
 
             @empty($__env->yieldContent('contenido1'))
             <p class="center-text">BIENVENIDOS A MI PAGINA</p>
+            @endempty
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col">
+            @yield("contenido2")
+
+            @empty($__env->yieldContent('contenido2'))
+           
             @endempty
           </div>
         </div>

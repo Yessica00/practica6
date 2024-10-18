@@ -28,13 +28,13 @@
       </div>
 
       <div class="row mb-3">
-        <label for="email" class="col-sm-3 col-form-label">Email</label>
+        <label for="apellidoM" class="col-sm-3 col-form-label">Apellido M</label>
         <div class="col-sm-9">
-          <input type="email" class="form-control" id="email" name="email" disabled value="{{$alumno->email}} ">
+          <input type="text" class="form-control" id="email" name="apellidoM" disabled value="{{$alumno->apellidoM}} ">
         </div>
       </div>
-    <button type="submit" class="btn btn-danger">Confirma la Eliminacion</button>
-    <a href="{{route('Alumnos2.index')}}" class="btn btn-primary">Regresar</a>
+      <button type="submit" class="btn btn-danger">Confirma la Eliminacion</button>
+      <a href="{{route('Alumnos2.index')}}" class="btn btn-primary">Regresar</a>
     
   </form>
 

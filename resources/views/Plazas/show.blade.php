@@ -1,13 +1,13 @@
-@extends('inicio2')
+@extends('plantillas/plantilla2')
 
 {{-- CONTENIDO1 --}}
-@section('contenido')
+@section('contenido1')
 
     @include('Plazas/tablahtml')
     
 @endsection
 
-   
+
 {{-- CONTENIDO2 --}}
 @section('contenido2')
 <h1>VER TDOOS LOS DATOS</h1>

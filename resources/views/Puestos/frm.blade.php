@@ -1,15 +1,11 @@
-
 @extends('plantillas/plantilla2')
 
 {{-- CONTENIDO1 --}}
-@section('contenido')
+@section('contenido1')
 
     @include('Puestos/tablahtml')
     
 @endsection
-
-
-
 
 
 {{-- CONTENIDO2 --}}
@@ -18,7 +14,7 @@
 
 @foreach ( $errors->all() as $error )
   <li>
-    {{$error}}
+   {{$error}}
    </li>
 @endforeach
 @if ($accion == 'C')

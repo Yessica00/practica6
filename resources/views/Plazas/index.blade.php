@@ -1,7 +1,5 @@
-
 @extends('inicio2')
 
-@section('contenido')
+@section('contenido1')
     @include('Plazas/tablahtml')
 @endsection
-

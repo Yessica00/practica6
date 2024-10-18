@@ -1,8 +1,9 @@
+@extends('plantillas/plantilla2')
 
-@extends('inicio2')
 
 {{-- CONTENIDO1 --}}
-@section('contenido')
+{{-- SI LE QUITO EL 1 SE UITA LA TABLA Y SE PONE EL INSERTAR  --}}
+@section('contenido1')
 
     @include('Plazas/tablahtml')
     
@@ -12,10 +13,9 @@
 {{-- CONTENIDO2 --}}
 @section('contenido2')
 
-
 @foreach ( $errors->all() as $error )
   <li>
-    {{$error}}
+   {{$error}}
    </li>
 @endforeach
 @if ($accion == 'C')
