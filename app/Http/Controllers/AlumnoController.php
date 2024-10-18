@@ -42,7 +42,7 @@ class AlumnoController extends Controller
         
        $val= $request->validate($this->val);
         Alumno::create($val);
-        return redirect()->route('Alumnos.index')->with("mensaje",'se inserto correctamente.');
+        return redirect()->route('Alumnos2.index')->with("mensaje",'se inserto correctamente.');
     }
 
  
@@ -72,7 +72,7 @@ class AlumnoController extends Controller
         //LO QUE SE DA VALIDADO SE GRABA
         $val= $request->validate($this->val);
         $alumno->update($val);
-        return redirect()->route('Alumnos.index');
+        return redirect()->route('Alumnos2.index');
     }
  
     /**
@@ -81,7 +81,7 @@ class AlumnoController extends Controller
     public function destroy(Alumno $alumno)
 {
     $alumno->delete();
-    return redirect()->route('Alumnos.index');
+    return redirect()->route('Alumnos2.index');
 }
 
     

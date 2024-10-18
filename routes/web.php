@@ -121,16 +121,16 @@ Route::get('/inicio2', function () {
         })->middleware(['auth', 'verified'])->name('asesoriaSS');
 
         Route::controller(AlumnoController::class)->group(function(){
-            Route::get('/Alumnos.index', [AlumnoController::class, 'index'])->name('Alumnos.index');    // INDEX
+            Route::get('/Alumnos2.index', [AlumnoController::class, 'index'])->name('Alumnos2.index');    // INDEX
             
-            Route::get('/Alumnos.create', [AlumnoController::class, 'create'])->name('Alumnos.create'); // CREATE
-            Route::post('/Alumnos.store', [AlumnoController::class, 'store'])->name('Alumnos.store');       
+            Route::get('/Alumnos2.create', [AlumnoController::class, 'create'])->name('Alumnos2.create'); // CREATE
+            Route::post('/Alumnos2.store', [AlumnoController::class, 'store'])->name('Alumnos2.store');       
             
-            Route::get('/Alumnos.edit/{alumno}', [AlumnoController::class, 'edit'])->name('Alumnos.edit');  // EDIT
-            Route::get('/Alumnos.show/{alumno}', [AlumnoController::class, 'show'])->name('Alumnos.show');  // VER
+            Route::get('/Alumnos2.edit/{alumno}', [AlumnoController::class, 'edit'])->name('Alumnos2.edit');  // EDIT
+            Route::get('/Alumnos2.show/{alumno}', [AlumnoController::class, 'show'])->name('Alumnos2.show');  // VER
             
-            Route::post('/Alumnos.destroy/{alumno}', [AlumnoController::class, 'destroy'])->name('Alumnos.destroy');// DESRTOY
-            Route::post('/Alumnos.update/{alumno}', [AlumnoController::class, 'update'])->name('Alumnos.update');//UPDATE       
+            Route::post('/Alumnos2.destroy/{alumno}', [AlumnoController::class, 'destroy'])->name('Alumnos2.destroy');// DESRTOY
+            Route::post('/Alumnos2.update/{alumno}', [AlumnoController::class, 'update'])->name('Alumnos2.update');//UPDATE       
             });
 
 

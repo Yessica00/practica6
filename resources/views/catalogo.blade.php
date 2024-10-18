@@ -42,7 +42,7 @@
         <a class="nav-link" href="#">Carreras</a>
         <a class="nav-link" href="#">Retículas</a>
         <a class="nav-link" href="#">Materias</a>
-        <a class="nav-link" href="{{route ('Alumnos.index')}}">Alumnos</a>
+        <a class="nav-link" href="{{route ('Alumnos2.index')}}">Alumnos</a>
     </nav>
 
     <div class="col-md-10">

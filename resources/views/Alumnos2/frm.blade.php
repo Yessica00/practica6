@@ -13,16 +13,16 @@
 
 @if ($accion == 'C')
 <h1>INSERTANDO</h1> 
-  <form action="{{route('Alumnos.store')}}" method="POST">
+  <form action="{{route('Alumnos2.store')}}" method="POST">
     
 
   @elseif ($accion == 'E')
   <h1>EDITANDO FRM</h1> 
-  <form action="{{route('Alumnos.update',$alumno->id)}}" method="POST">
+  <form action="{{route('Alumnos2.update',$alumno->id)}}" method="POST">
 
     @elseif ($accion=='D')
     <h1>PARA ELIMINAR</h1> 
-    <form action="{{route('Alumnos.destroy',$alumno)}}" method="POST">
+    <form action="{{route('Alumnos2.destroy',$alumno)}}" method="POST">
     
   @endif
   
