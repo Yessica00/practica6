@@ -1,7 +1,7 @@
 @extends('plantillas/plantilla2')
 
 {{-- CONTENIDO1 --}}
-@section('contenido')
+@section('contenido1')
 
     @include('Alumnos2/tablahtml')
     
