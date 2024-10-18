@@ -1,4 +1,4 @@
-@extends('catalogos')
+@extends('catalogo')
 
 @section('contenido')
 <!DOCTYPE html>
