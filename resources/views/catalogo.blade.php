@@ -1,6 +1,6 @@
 @extends('inicio2')
 
-@section("contenido1")
+@section("contenido2")
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +56,7 @@
           <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
           <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
       </div>
-      @yield("contenido")
+      @yield("contenido1")
   </div>
 </div>
 </div>

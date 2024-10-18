@@ -23,14 +23,16 @@
         <tbody>
             @foreach ($alumnos as $alumno)
             <tr>
-                <td scope="row"> {{ $alumno->noctrl }}  </td>
+                <td scope="row">{{ $alumno->id }}</td>
+                <td>{{ $alumno->noctrl }}  </td>
                 <td>{{ $alumno->nombre }}  </td>
-                <td>{{ $alumno->apellidop }}</td>
-                <td>{{ $alumno->apellidom }}</td>
+                <td>{{ $alumno->apellidoP }}</td>
+                <td>{{ $alumno->apellidoM }}</td>
                 <td>{{ $alumno->sexo }}</td>
-                <td><a href="{{route('Alumnos2.edit',$alumno->noctrl)}}" class="btn button btn-success">Editar</a></td>
-                <td><a href="{{route('Alumnos2.show',$alumno->noctrl)}}" class="btn button btn-danger">Eliminar</a></td>
-                <td><a href="{{route('Alumnos2.show',$alumno->noctrl)}}" class="btn button btn-primary">Ver</a></td>
+    
+                <td><a href="{{route('Alumnos2.edit',$alumno->id)}}" class="btn button btn-success">Editar</a></td>
+                <td><a href="{{route('Alumnos2.show',$alumno->id)}}" class="btn button btn-danger">Eliminar</a></td>
+                <td><a href="{{route('Alumnos2.show',$alumno->id)}}" class="btn button btn-primary">Ver</a></td>
             </tr>
             @endforeach
         </tbody>

@@ -1,4 +1,4 @@
-
+@extends('catalogos')
 
 @section('contenido')
 <!DOCTYPE html>
@@ -14,7 +14,7 @@
             background-color: #111d5e !important;
             color: white !important;
         }
-        tr {
+        tr { 
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
             color: black;
