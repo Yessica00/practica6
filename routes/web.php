@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlazaController;
+use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\PuestoController;
+use App\Http\Controllers\ProfileController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -21,11 +24,6 @@ Route::get('/contactanos',function (){
     return view('contactanos');
 })->name('contactanos');
 
-Route::get('/acerca',function (){
-    return view('acerca');
-})->name('acerca');
-
-
 
 
 // INICIO 2
@@ -39,14 +37,7 @@ Route::get('/inicio2', function () {
         return view('catalogo');
     })->middleware(['auth', 'verified'])->name('catalogo');
 
-    Route::get('/horarios',function (){
-        return view('horarios');
-    })->middleware(['auth', 'verified'])->name('horarios');
-    
 
-    Route::get('/proyectosInd',function (){
-        return view('proyectosInd');
-    })->middleware(['auth', 'verified'])->name('proyectosInd');
     
         Route::get('/periodo',function (){
             return view('periodo');
@@ -64,33 +55,40 @@ Route::get('/inicio2', function () {
             return view('puesto');
         })->middleware(['auth', 'verified'])->name('puesto');
 
-        Route::get('/personal',function (){
-            return view('personal');
-        })->middleware(['auth', 'verified'])->name('personal');
-
         Route::get('/depto',function (){
             return view('depto');
-        })->middleware(['auth', 'verified'])->name('depto');
-
-        Route::get('/reticula',function (){
-            return view('reticula');
-        })->middleware(['auth', 'verified'])->name('reticula');
-
-        Route::get('/materia',function (){
-            return view('materia');
-        })->middleware(['auth', 'verified'])->name('materia');
+        })->middleware(['auth', 'verified'])->name('depto');        
 
         Route::get('/alumno',function (){
             return view('alumno');
         })->middleware(['auth', 'verified'])->name('alumno');
+
+        
     //    
+    Route::get('/Plazas.index', function(){
+        return view('Plazas.index');
+    })->middleware("auth")->name("Plazas.index");
+
+    Route::get('/puestos.index', function(){
+        return view('puestos.index');
+    })->middleware("auth")->name("puestos.index");
+
+
+
+    Route::get('/horarios',function (){
+        return view('horarios');
+    })->middleware(['auth', 'verified'])->name('horarios');
+
+    Route::get('/proyectosInd',function (){
+        return view('proyectosInd');
+    })->middleware(['auth', 'verified'])->name('proyectosInd');
     //HORARIOS
         Route::get('/docentes',function (){
             return view('docentes');
         })->middleware(['auth', 'verified'])->name('docentes');
 
-        Route::get('/Halumnos',function (){
-            return view('Halumnos');
+        Route::get('/alumnos',function (){
+            return view('alumnos');
         })->middleware(['auth', 'verified'])->name('Halumnos');
     //
     //PROYECTOS INDIVIDUALES
@@ -121,6 +119,45 @@ Route::get('/inicio2', function () {
         Route::get('/asesoriaSS',function (){
             return view('asesoriaSS');
         })->middleware(['auth', 'verified'])->name('asesoriaSS');
+
+        Route::controller(AlumnoController::class)->group(function(){
+            Route::get('/Alumnos.index', [AlumnoController::class, 'index'])->name('Alumnos.index');    // INDEX
+            
+            Route::get('/Alumnos.create', [AlumnoController::class, 'create'])->name('Alumnos.create'); // CREATE
+            Route::post('/Alumnos.store', [AlumnoController::class, 'store'])->name('Alumnos.store');       
+            
+            Route::get('/Alumnos.edit/{alumno}', [AlumnoController::class, 'edit'])->name('Alumnos.edit');  // EDIT
+            Route::get('/Alumnos.show/{alumno}', [AlumnoController::class, 'show'])->name('Alumnos.show');  // VER
+            
+            Route::post('/Alumnos.destroy/{alumno}', [AlumnoController::class, 'destroy'])->name('Alumnos.destroy');// DESRTOY
+            Route::post('/Alumnos.update/{alumno}', [AlumnoController::class, 'update'])->name('Alumnos.update');//UPDATE       
+            });
+
+
+
+            Route::get('/Plazas.index', [PlazaController::class, 'index'])->name('Plazas.index');    // INDEX
+    
+    Route::get('/Plazas.create', [PlazaController::class, 'create'])->name('Plazas.create'); // CREATE
+    Route::post('/Plazas.store', [PlazaController::class, 'store'])->name('Plazas.store');       
+    
+    Route::get('/Plazas.edit/{plaza}', [PlazaController::class, 'edit'])->name('Plazas.edit');       // EDIT
+    Route::get('/Plazas.show/{plaza}', [PlazaController::class, 'show'])->name('Plazas.show');       // VER
+    
+    Route::post('/Plazas.destroy/{plaza}', [PlazaController::class, 'destroy'])->name('Plazas.destroy');// DESRTOY
+    Route::post('/Plazas.update/{plaza}', [PlazaController::class, 'update'])->name('Plazas.update');//UPDATE
+
+
+//
+Route::get('/Puestos.index', [PuestoController::class, 'index'])->name('Puestos.index');    // INDEX
+    
+Route::get('/Puestos.create', [PuestoController::class, 'create'])->name('Puestos.create'); // CREATE
+Route::post('/Puestos.store', [PuestoController::class, 'store'])->name('Puestos.store');       
+
+Route::get('/Puestos.edit/{puesto}', [PuestoController::class, 'edit'])->name('Puestos.edit');       // EDIT
+Route::get('/Puestos.show/{puesto}', [PuestoController::class, 'show'])->name('Puestos.show');       // VER
+
+Route::post('/Puestos.destroy/{puesto}', [PuestoController::class, 'destroy'])->name('Puestos.destroy');// DESRTOY
+Route::post('/Puestos.update/{puesto}', [PuestoController::class, 'update'])->name('Puestos.update');//UPDATE
 
     //TUTORIAS
        

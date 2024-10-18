@@ -15,19 +15,19 @@
     height: 100vh;
     background-color: #f8f9fa;
     padding: 15px;
-}
+      }
 
-nav a {
-    display: block;
-    margin: 5px 0;
-    color: #333;
-    text-decoration: none;
-}
+      nav a {
+          display: block;
+          margin: 5px 0;
+          color: #333;
+          text-decoration: none;
+      }
 
-nav a:hover {
-    background-color: #e2e6ea;
-    border-radius: 5px;
-}
+      nav a:hover {
+          background-color: #e2e6ea;
+          border-radius: 5px;
+      }
 
   </style>
 </head>
@@ -35,20 +35,35 @@ nav a:hover {
   <div class="d-flex">
     <nav class="nav flex-column bg-light p-3" style="width: 200px; height: 100vh;">
         <a class="nav-link active" href="#">Periodos</a>
-        <a class="nav-link" href="#">Plazas</a>
-        <a class="nav-link" href="#">Puestos</a>
+        <a class="nav-link" href="{{ route('Plazas.index') }}">Plazas</a>
+        <a class="nav-link" href="{{ route('Puestos.index') }}">Puestos</a>
         <a class="nav-link" href="#">Personal</a>
-        <a class="nav-link" href="#">Deptos.</a>
+        <a class="nav-link" href="">Deptos.</a>
         <a class="nav-link" href="#">Carreras</a>
         <a class="nav-link" href="#">Retículas</a>
         <a class="nav-link" href="#">Materias</a>
-        <a class="nav-link" href="#">Alumnos</a>
+        <a class="nav-link" href="{{route ('Alumnos.index')}}">Alumnos</a>
     </nav>
 
-    <div class="flex-grow-1 p-4">
-        <h1>Contenido </h1>
-    </div>
+    <div class="col-md-10">
+      <!-- Tab panes -->
+      <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="tab1Id" role="tabpanel">
+              <!-- Contenido para la pestaña 1 -->
+          </div>
+          <div class="tab-pane fade" id="tab2Id" role="tabpanel"></div>
+          <div class="tab-pane fade" id="tab3Id" role="tabpanel"></div>
+          <div class="tab-pane fade" id="tab4Id" role="tabpanel"></div>
+          <div class="tab-pane fade" id="tab5Id" role="tabpanel"></div>
+      </div>
+      @yield("contenido")
+  </div>
 </div>
-</body>
-</html>
-@endsection
+</div>
+
+<!-- (Optional) - Place this js code after initializing bootstrap.min.js or bootstrap.bundle.min.js -->
+<script>
+  var triggerEl = document.querySelector("#navId a");
+  bootstrap.Tab.getInstance(triggerEl).show(); // Select tab by name
+  </script>
+  @endsection

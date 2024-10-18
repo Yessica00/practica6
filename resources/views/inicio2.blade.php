@@ -16,30 +16,32 @@
             @include("menu2")
           </div>
         </div>
+        
         <div class="row">
           <div class="col">
             @yield("contenido1")
 
             @empty($__env->yieldContent('contenido1'))
             <p class="center-text">BIENVENIDOS A MI PAGINA</p>
-        @endempty
-            <footer class="footer mt-auto py-3 bg-light">
-              <div class="container">
-              <span class="text-muted">
-                  
-                  @auth
-                  {{-- Mostrar información del usuario autenticado --}}
-                  Usuario: {{ Auth::user()->name }} |
-                  Correo: {{ Auth::user()->email }}
-                  
-                  @endauth
-              </span>
-              </div>
-          </footer>
-        
+            @endempty
           </div>
-          
         </div>
+
+      
+
+        <footer class="footer mt-auto py-3 bg-light">
+          <div class="container">
+            <span class="text-muted">
+                
+                @auth
+                {{-- Mostrar información del usuario autenticado --}}
+                Usuario: {{ Auth::user()->name }} |
+                Correo: {{ Auth::user()->email }}
+                
+                @endauth
+            </span>
+          </div>
+        </footer>
       </div>
       
 </body>

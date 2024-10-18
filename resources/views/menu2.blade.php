@@ -17,26 +17,22 @@
 
     {{-- CATALOGO --}}
     <li class="nav-item" role="presentation">
-        <a href="{{route('catalogo')}}" class="nav-link" 
-            >catalogo</a>
+        <a href="{{route('catalogo')}}" class="nav-link">catalogo</a>
     </li>
 
     {{-- HORARIOS --}}
     <li class="nav-item" role="presentation">
-        <a href="{{route('horarios')}}" class="nav-link" 
-            >Horarios</a>
+        <a href="{{route('horarios')}}" class="nav-link">Horarios</a>
     </li>
 
     {{-- PROYECTOS IND. --}}
     <li class="nav-item" role="presentation">
-        <a href="{{route('proyectosInd')}}" class="nav-link" 
-            >Proyectos Indivisduales </a>
+        <a href="{{route('proyectosInd')}}" class="nav-link">Proyectos Indivisduales </a>
     </li>
 
     {{-- INSTRUMENTACION --}}
     <li class="nav-item" role="presentation">
-        <a href="{{route('instrumentacion')}}" class="nav-link" 
-            >Instrumentacion</a>
+        <a href="{{route('instrumentacion')}}" class="nav-link">Instrumentacion</a>
     </li>
 
     {{-- TUTORIAS --}}
@@ -54,6 +50,7 @@
             <option value="ene-jun-25">Ene-Jun 25</option>
         </select>
     </li>
+    
     
 
  {{-- guest estas como invitado --}}
@@ -78,5 +75,6 @@
 </li>
 @endauth
 </ul>
+
 
   

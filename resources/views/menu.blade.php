@@ -16,17 +16,17 @@
 
 
  <li class="nav-item" role="presentation">
-    <a href="{{route('acerca')}}" class="nav-link" 
+    <a href="" class="nav-link" 
         >Acerca de </a>
 </li>
 
 <li class="nav-item" role="presentation">
-    <a href="{{route('contactanos')}}" class="nav-link" 
+    <a href="" class="nav-link" 
         >Contactanos</a>
 </li>
 
 <li class="nav-item" role="presentation">
-    <a href="{{route('ayuda')}}" class="nav-link" 
+    <a href="" class="nav-link" 
         >Ayuda </a>
 </li>
 
