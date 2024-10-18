@@ -1,22 +1,16 @@
+
 @extends('plantillas/plantilla2')
-
+{{--  --}}
+@extends('inicio2') 
 {{-- CONTENIDO1 --}}
-@section('contenido1')
-
+@section('contenido')
     @include('Alumnos2/tablahtml')
-    
 @endsection
 
 
 {{-- CONTENIDO2 --}}
 @section('contenido2')
 
-
-@foreach ( $errors->all() as $error )
-  <li>
-    {{$error}}
-   </li>
-@endforeach
 @if ($accion == 'C')
 <h1>INSERTANDO</h1> 
   <form action="{{route('Alumnos2.store')}}" method="POST">
@@ -24,7 +18,7 @@
 
   @elseif ($accion == 'E')
   <h1>EDITANDO FRM</h1> 
-  <form action="{{route('Alumnos2.update',$alumno->noctrl)}}" method="POST">
+  <form action="{{route('Alumnos2.update',$alumno->id)}}" method="POST">
 
     @elseif ($accion=='D')
     <h1>PARA ELIMINAR</h1> 
@@ -33,16 +27,18 @@
   @endif
   
   @csrf
-    {{-- <div class="row mb-3">
-      <label for="noctrl" class="col-sm-3 col-form-label">Número de Control</label>
-      <div class="col-sm-9">
-        <input type="text" class="form-control" id="noctrl" name="noctrl" value="{{old('noctrl',$alumno->noctrl)}}" {{$des}}>
-        @error('noctrl')
-        <p class="text-danger">Error en: {{$message}}</p>
-        @enderror
-      </div>
-    </div> --}}
-    
+
+  <div class="row mb-3">
+    <label for="noctrl" class="col-sm-3 col-form-label">No Ctrl</label>
+    <div class="col-sm-9">
+      <input type="text" class="form-control" id="noctrl" name="noctrl" value="{{old('noctrl',$alumno->noctrl)}}" {{$des}}>
+      @error('noctrl')
+      <p class="text-danger">Error en: {{$message}}</p>
+      @enderror
+    </div>
+  </div>
+
+      
     <div class="row mb-3">
       <label for="nombre" class="col-sm-3 col-form-label">Nombre</label>
       <div class="col-sm-9">
@@ -56,17 +52,17 @@
     <div class="row mb-3">
         <label for="apellidoP" class="col-sm-3 col-form-label">Apellido Paterno</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="apellidoP" name="apellidoP" value="{{old('apellidoP',$alumno->apellidop)}}" {{$des}}>
+          <input type="text" class="form-control" id="apellidoP" name="apellidoP" value="{{old('apellidoP',$alumno->apellidoP)}}" {{$des}}>
           @error('apellidoP')
           <p class="text-danger">Error en: {{$message}}</p>
         @enderror
         </div>
       </div>
-    
+
       <div class="row mb-3">
-        <label for="apellidoM" class="col-sm-3 col-form-label">Apellido Materno</label>
+        <label for="apellidoP" class="col-sm-3 col-form-label">Apellido Materno</label>
         <div class="col-sm-9">
-          <input type="text" class="form-control" id="apellidoM" name="apellidoM" value="{{old('apellidoM',$alumno->apellidom)}}" {{$des}}>
+          <input type="text" class="form-control" id="apellidoM" name="apellidoM" value="{{old('apellidoM',$alumno->apellidoM)}}" {{$des}}>
           @error('apellidoM')
           <p class="text-danger">Error en: {{$message}}</p>
         @enderror
