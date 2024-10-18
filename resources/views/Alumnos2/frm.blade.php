@@ -1,6 +1,4 @@
 
-
-
 @extends('plantillas/plantilla2')
 {{--  --}}
 @extends('inicio2') 
