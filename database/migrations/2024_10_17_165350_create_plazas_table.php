@@ -12,11 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('plazas', function (Blueprint $table) {
-            $table->id();
-            $table->String('idPlaza',25);
-            $table->String('nombrePlaza',200);
+            $table->string('idPlaza')->primary();
+            $table->string("nombrePlaza", 200);
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -27,3 +27,4 @@ return new class extends Migration
         Schema::dropIfExists('plazas');
     }
 };
+

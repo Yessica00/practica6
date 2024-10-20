@@ -11,7 +11,7 @@
 {{-- CONTENIDO2 --}}
 @section('contenido2')
 <h1>Editando</h1>
-<form action="{{route('Puestos.update',$puesto->id)}}" method="POST">
+<form action="{{route('Puestos.update',$puesto->idPuesto)}}" method="POST">
   @csrf
 
 

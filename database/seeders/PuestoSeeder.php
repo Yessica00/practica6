@@ -13,6 +13,6 @@ class PuestoSeeder extends Seeder
      */
     public function run(): void
     {
-        Puesto::factory(50)->create();
+        Puesto::factory(20)->create();
     }
 }

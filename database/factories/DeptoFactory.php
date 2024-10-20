@@ -13,7 +13,7 @@ class DeptoFactory extends Factory
      * Define the model's default state.
      *
      * @return array<string, mixed>
-     */
+     */ 
     public function definition(): array
     {   $titulo=fake()->Unique()->jobTitle();
         return [
@@ -24,3 +24,4 @@ class DeptoFactory extends Factory
         ];
     }
 }
+ 

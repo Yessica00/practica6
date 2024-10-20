@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DeptoController;
 use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PuestoController;
+use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReticulaController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -119,45 +124,105 @@ Route::get('/inicio2', function () {
         Route::get('/asesoriaSS',function (){
             return view('asesoriaSS');
         })->middleware(['auth', 'verified'])->name('asesoriaSS');
-
+///////////////////////////////////////////    ALUMNOS      //////////////////////////////////////////////
         Route::controller(AlumnoController::class)->group(function(){
             Route::get('/Alumnos2.index', [AlumnoController::class, 'index'])->name('Alumnos2.index');    // INDEX
-            
+                
             Route::get('/Alumnos2.create', [AlumnoController::class, 'create'])->name('Alumnos2.create'); // CREATE
             Route::post('/Alumnos2.store', [AlumnoController::class, 'store'])->name('Alumnos2.store');       
-            
+                
             Route::get('/Alumnos2.edit/{alumno}', [AlumnoController::class, 'edit'])->name('Alumnos2.edit');  // EDIT
             Route::get('/Alumnos2.show/{alumno}', [AlumnoController::class, 'show'])->name('Alumnos2.show');  // VER
-            
+                
             Route::post('/Alumnos2.destroy/{alumno}', [AlumnoController::class, 'destroy'])->name('Alumnos2.destroy');// DESRTOY
             Route::post('/Alumnos2.update/{alumno}', [AlumnoController::class, 'update'])->name('Alumnos2.update');//UPDATE       
-            });
+        });
 
 
-
-            Route::get('/Plazas.index', [PlazaController::class, 'index'])->name('Plazas.index');    // INDEX
+///////////////////////////////////////////    PLAZAS      //////////////////////////////////////////////
+        Route::get('/Plazas.index', [PlazaController::class, 'index'])->name('Plazas.index');    // INDEX
     
-    Route::get('/Plazas.create', [PlazaController::class, 'create'])->name('Plazas.create'); // CREATE
-    Route::post('/Plazas.store', [PlazaController::class, 'store'])->name('Plazas.store');       
-    
-    Route::get('/Plazas.edit/{plaza}', [PlazaController::class, 'edit'])->name('Plazas.edit');       // EDIT
-    Route::get('/Plazas.show/{plaza}', [PlazaController::class, 'show'])->name('Plazas.show');       // VER
-    
-    Route::post('/Plazas.destroy/{plaza}', [PlazaController::class, 'destroy'])->name('Plazas.destroy');// DESRTOY
-    Route::post('/Plazas.update/{plaza}', [PlazaController::class, 'update'])->name('Plazas.update');//UPDATE
+        Route::get('/Plazas.create', [PlazaController::class, 'create'])->name('Plazas.create'); // CREATE
+        Route::post('/Plazas.store', [PlazaController::class, 'store'])->name('Plazas.store');       
+        Route::get('/Plazas.edit/{plaza}', [PlazaController::class, 'edit'])->name('Plazas.edit');       // EDIT
+        Route::get('/Plazas.show/{plaza}', [PlazaController::class, 'show'])->name('Plazas.show');       // VER
+            
+        Route::post('/Plazas.destroy/{plaza}', [PlazaController::class, 'destroy'])->name('Plazas.destroy');// DESRTOY
+        Route::post('/Plazas.update/{plaza}', [PlazaController::class, 'update'])->name('Plazas.update');//UPDATE
 
 
-//
-Route::get('/Puestos.index', [PuestoController::class, 'index'])->name('Puestos.index');    // INDEX
-    
-Route::get('/Puestos.create', [PuestoController::class, 'create'])->name('Puestos.create'); // CREATE
-Route::post('/Puestos.store', [PuestoController::class, 'store'])->name('Puestos.store');       
+///////////////////////////////////////////    PUESTO      //////////////////////////////////////////////
+        Route::get('/Puestos.index', [PuestoController::class, 'index'])->name('Puestos.index');    // INDEX
+            
+        Route::get('/Puestos.create', [PuestoController::class, 'create'])->name('Puestos.create'); // CREATE
+        Route::post('/Puestos.store', [PuestoController::class, 'store'])->name('Puestos.store');       
 
-Route::get('/Puestos.edit/{puesto}', [PuestoController::class, 'edit'])->name('Puestos.edit');       // EDIT
-Route::get('/Puestos.show/{puesto}', [PuestoController::class, 'show'])->name('Puestos.show');       // VER
+        Route::get('/Puestos.edit/{puesto}', [PuestoController::class, 'edit'])->name('Puestos.edit');       // EDIT
+        Route::get('/Puestos.show/{puesto}', [PuestoController::class, 'show'])->name('Puestos.show');       // VER
 
-Route::post('/Puestos.destroy/{puesto}', [PuestoController::class, 'destroy'])->name('Puestos.destroy');// DESRTOY
-Route::post('/Puestos.update/{puesto}', [PuestoController::class, 'update'])->name('Puestos.update');//UPDATE
+        Route::post('/Puestos.destroy/{puesto}', [PuestoController::class, 'destroy'])->name('Puestos.destroy');// DESRTOY
+        Route::post('/Puestos.update/{puesto}', [PuestoController::class, 'update'])->name('Puestos.update');//UPDATE
+
+
+///////////////////////////////////////////    DEPTOS      //////////////////////////////////////////////
+        Route::get('/Deptos.index', [DeptoController::class, 'index'])->name('Deptos.index');    // INDEX
+            
+        Route::get('/Deptos.create', [DeptoController::class, 'create'])->name('Deptos.create'); // CREATE
+        Route::post('/Deptos.store', [DeptoController::class, 'store'])->name('Deptos.store');       
+
+        Route::get('/Deptos.edit/{depto}', [DeptoController::class, 'edit'])->name('Deptos.edit');       // EDIT
+        Route::get('/Deptos.show/{depto}', [DeptoController::class, 'show'])->name('Deptos.show');       // VER
+
+        Route::post('/Deptos.destroy/{depto}', [DeptoController::class, 'destroy'])->name('Deptos.destroy');// DESRTOY
+        Route::post('/Deptos.update/{depto}', [DeptoController::class, 'update'])->name('Deptos.update');//UPDATE
+        
+///////////////////////////////////////////    Carreras      //////////////////////////////////////////////
+        Route::get('/Carreras.index', [CarreraController::class, 'index'])->name('Carreras.index');    // INDEX
+                    
+        Route::get('/Carreras.create', [CarreraController::class, 'create'])->name('Carreras.create'); // CREATE
+        Route::post('/Carreras.store', [CarreraController::class, 'store'])->name('Carreras.store');       
+
+        Route::get('/Carreras.edit/{carrera}', [CarreraController::class, 'edit'])->name('Carreras.edit');       // EDIT
+        Route::get('/Carreras.show/{carrera}', [CarreraController::class, 'show'])->name('Carreras.show');       // VER
+
+        Route::post('/Carreras.destroy/{carrera}', [CarreraController::class, 'destroy'])->name('Carreras.destroy');// DESRTOY
+        Route::post('/Carreras.update/{carrera}', [CarreraController::class, 'update'])->name('Carreras.update');//UPDATE
+
+///////////////////////////////////////////    Periodos      //////////////////////////////////////////////
+        Route::get('/Periodos.index', [PeriodoController::class, 'index'])->name('Periodos.index');    // INDEX
+
+        Route::get('/Periodos.create', [PeriodoController::class, 'create'])->name('Periodos.create'); // CREATE
+        Route::post('/Periodos.store', [PeriodoController::class, 'store'])->name('Periodos.store');       
+
+        Route::get('/Periodos.edit/{periodo}', [PeriodoController::class, 'edit'])->name('Periodos.edit');       // EDIT
+        Route::get('/Periodos.show/{periodo}', [PeriodoController::class, 'show'])->name('Periodos.show');       // VER
+
+        Route::post('/Periodos.destroy/{periodo}', [PeriodoController::class, 'destroy'])->name('Periodos.destroy');// DESRTOY
+        Route::post('/Periodos.update/{periodo}', [PeriodoController::class, 'update'])->name('Periodos.update');//UPDATE
+
+///////////////////////////////////////////    Materias      //////////////////////////////////////////////
+        Route::get('/Materias.index', [MateriaController::class, 'index'])->name('Materias.index');    // INDEX
+
+        Route::get('/Materias.create', [MateriaController::class, 'create'])->name('Materias.create'); // CREATE
+        Route::post('/Materias.store', [MateriaController::class, 'store'])->name('Materias.store');       
+
+        Route::get('/Materias.edit/{materia}', [MateriaController::class, 'edit'])->name('Materias.edit');       // EDIT
+        Route::get('/Materias.show/{materia}', [MateriaController::class, 'show'])->name('Materias.show');       // VER
+
+        Route::post('/Materias.destroy/{materia}', [MateriaController::class, 'destroy'])->name('Materias.destroy');// DESRTOY
+        Route::post('/Materias.update/{materia}', [MateriaController::class, 'update'])->name('Materias.update');//UPDATE
+
+///////////////////////////////////////////    Reticulas      //////////////////////////////////////////////
+        Route::get('/Reticulas.index', [ReticulaController::class, 'index'])->name('Reticulas.index');    // INDEX
+
+        Route::get('/Reticulas.create', [ReticulaController::class, 'create'])->name('Reticulas.create'); // CREATE
+        Route::post('/Reticulas.store', [ReticulaController::class, 'store'])->name('Reticulas.store');       
+
+        Route::get('/Reticulas.edit/{reticula}', [ReticulaController::class, 'edit'])->name('Reticulas.edit');       // EDIT
+        Route::get('/Reticulas.show/{reticula}', [ReticulaController::class, 'show'])->name('Reticulas.show');       // VER
+
+        Route::post('/Reticulas.destroy/{reticula}', [ReticulaController::class, 'destroy'])->name('Reticulas.destroy');// DESRTOY
+        Route::post('/Reticulas.update/{reticula}', [ReticulaController::class, 'update'])->name('Reticulas.update');//UPDATE
 
     //TUTORIAS
        

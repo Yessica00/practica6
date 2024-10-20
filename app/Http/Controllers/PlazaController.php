@@ -11,7 +11,7 @@ class PlazaController extends Controller
 
     public function __construct(){
         $this->val=[
-            'idPlaza'    =>['required'],
+            // 'idPlaza'    =>['required'],
             'nombrePlaza'    =>['required'],
         ];
     }
@@ -41,6 +41,7 @@ class PlazaController extends Controller
     public function store(Request $request)
     {
         $val= $request->validate($this->val);
+        $val['idPlaza']=fake()->bothify("???####");
         Plaza::create($val);
         return redirect()->route('Plazas.index')->with("mensaje",'se inserto correctamente.');
     }

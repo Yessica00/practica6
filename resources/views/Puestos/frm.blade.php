@@ -24,7 +24,7 @@
 
   @elseif ($accion == 'E')
   <h1>EDITANDO FRM</h1> 
-  <form action="{{route('Puestos.update',$puesto->id)}}" method="POST">
+  <form action="{{route('Puestos.update',$puesto->idPuesto)}}" method="POST">
 
     @elseif ($accion=='D')
     <h1>PARA ELIMINAR</h1> 
@@ -33,7 +33,7 @@
   @endif
   
   @csrf
-  <div class="row mb-3">
+  {{-- <div class="row mb-3">
     <label for="idPuesto" class="col-sm-3 col-form-label">Id Puesto</label>
     <div class="col-sm-9">
       <input type="text" class="form-control" id="idPuesto" name="idPuesto" value="{{old('nombre',$puesto->idPuesto)}}" {{$des}}>
@@ -41,7 +41,7 @@
       <p class="text-danger">Error en: {{$message}}</p>
       @enderror
     </div>
-  </div>
+  </div> --}}
     
     <div class="row mb-3">
       <label for="nombrePuesto" class="col-sm-3 col-form-label">Nombre</label>

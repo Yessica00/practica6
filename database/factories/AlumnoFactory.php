@@ -23,8 +23,9 @@ class AlumnoFactory extends Factory
             'apellidoP' => fake()->lastName(),
             'apellidoM' => fake()->lastName(),
             'sexo'=>fake()->randomElement(['M','F']),
-            // FK
-            
+               
         ];
     }
+
+    
 }

@@ -1,3 +1,4 @@
+
 <ul>
 
 </ul>
@@ -13,12 +14,13 @@
     <table class="table table-hover table-striped">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">ID</th>
+
                 <th scope="col">No Ctrl</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Apellido Paterno</th>
                 <th scope="col">Apellido Materno</th>
                 <th scope="col">Sexo</th>
+                <th scope="col">Carrera</th>
                 <th scope="col">EDITAR</th>
                 <th scope="col">ELIMINAR</th>
                 <th scope="col">VER</th>
@@ -27,24 +29,24 @@
         <tbody>
             @foreach ($alumnos as $alumno)
             <tr>
-                <td scope="row">{{ $alumno->id }}</td>
                 <td>{{ $alumno->noctrl }}  </td>
                 <td>{{ $alumno->nombre }}  </td>
                 <td>{{ $alumno->apellidoP }}</td>
                 <td>{{ $alumno->apellidoM }}</td>
                 <td>{{ $alumno->sexo }}</td>
+                <td>{{ $alumno->carrera->nombreCarrera ?? 'N/A' }}</td> <!-- Aquí mostramos la carrera -->
                 <td>
-                    <a href="{{route('Alumnos2.edit',$alumno->id)}}" class="btn btn-success">
+                    <a href="{{route('Alumnos2.edit', $alumno->noctrl)}}" class="btn btn-success">
                         <i class="fas fa-edit"></i> Editar
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('Alumnos2.show',$alumno->id)}}" class="btn btn-danger">
+                    <a href="{{route('Alumnos2.show', $alumno->noctrl)}}" class="btn btn-danger">
                         <i class="fas fa-trash-alt"></i> Eliminar
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('Alumnos2.show',$alumno->id)}}" class="btn btn-primary">
+                    <a href="{{route('Alumnos2.show', $alumno->noctrl)}}" class="btn btn-primary">
                         <i class="fas fa-eye"></i> Ver
                     </a>
                 </td>

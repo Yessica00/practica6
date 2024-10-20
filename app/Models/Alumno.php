@@ -10,7 +10,14 @@ class Alumno extends Model
 {
     /** @use HasFactory<\Database\Factories\AlumnoFactory> */
        use HasFactory;
-    protected $fillable =['noctrl','nombre','apellidoP','apellidoM','sexo'];
 
-    
+       public function carrera():BelongsTo{
+        return $this->belongsTo(Carrera::class,'idCarrera');
+
+    }
+    protected $fillable =['noctrl','nombre','apellidoP','apellidoM','sexo','idCarrera'];
+
+    protected $primaryKey= 'noctrl'; //relacion de laravel id
+    protected $casts = ['noctrl'=>'string'];
+    public $incrementing = false; //me trae los valores incrementable
 }

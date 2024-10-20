@@ -13,7 +13,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Id Plaza</th>
+                {{-- <th scope="col">Id Plaza</th> --}}
                 <th scope="col">Nombre</th>
                 <th scope="col">Tipo</th>
                 <th scope="col">EDITAR</th>
@@ -24,22 +24,22 @@
         <tbody>
             @foreach ($puestos as $puesto)
             <tr>
-                <td scope="row">{{ $puesto->id }}</td>
+               
                 <td>{{ $puesto->idPuesto }}</td>
                 <td>{{ $puesto->nombrePuesto }}</td>
                 <td>{{ $puesto->tipo }}</td>
                 <td>
-                    <a href="{{route('Puestos.edit',$puesto->id)}}" class="btn btn-success">
+                    <a href="{{route('Puestos.edit',$puesto->idPuesto)}}" class="btn btn-success">
                         <i class="fas fa-edit"></i> Editar
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('Puestos.show',$puesto->id)}}" class="btn btn-danger">
+                    <a href="{{route('Puestos.show',$puesto->idPuesto)}}" class="btn btn-danger">
                         <i class="fas fa-trash-alt"></i> Eliminar
                     </a>
                 </td>
                 <td>
-                    <a href="{{route('Puestos.show',$puesto->id)}}" class="btn btn-primary">
+                    <a href="{{route('Puestos.show',$puesto->idPuesto)}}" class="btn btn-primary">
                         <i class="fas fa-eye"></i> Ver
                     </a>
                 </td>

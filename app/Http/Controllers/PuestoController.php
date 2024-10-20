@@ -11,7 +11,7 @@ class PuestoController extends Controller
 
     public function __construct(){
         $this->val=[
-            'idPuesto'    =>['required'],
+            // 'idPuesto'    =>['required'],
             'nombrePuesto'    =>['required','min:3'],
             'tipo'              =>['required'],
         ]; 
@@ -39,6 +39,7 @@ class PuestoController extends Controller
     public function store(Request $request)
     {
         $val= $request->validate($this->val);
+        $val['idPuesto']=fake()->bothify("???####");
         Puesto::create($val);
         return redirect()->route('Puestos.index')->with("mensaje",'se inserto correctamente.');
     }

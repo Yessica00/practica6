@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Alumno;
+use App\Models\Carrera;
 use Illuminate\Http\Request;
 
 class AlumnoController extends Controller
@@ -16,6 +17,7 @@ class AlumnoController extends Controller
             'apellidoP' =>['required'],
             'apellidoM' =>['required'],
             'sexo'      =>['required'],
+            'idCarrera'      =>['required'],
 
         ];
     }
@@ -30,16 +32,18 @@ class AlumnoController extends Controller
     {
         $alumnos= Alumno::paginate(5); 
         $alumno=new Alumno;
+        $carreras=Carrera::all();
+
         $accion='C';
         $txtbtn='Guardar';
         $des='';
-        return view("Alumnos2/frm",compact("alumnos",'alumno',"accion",'txtbtn','des'));
+        return view("Alumnos2/frm",compact("alumnos",'alumno',"accion",'txtbtn','des','carreras'));
     }
 
    
     public function store(Request $request)
     {
-        
+        // var_dump($request)
        $val= $request->validate($this->val);
         Alumno::create($val);
         return redirect()->route('Alumnos2.index')->with("mensaje",'se inserto correctamente.');
@@ -51,20 +55,26 @@ class AlumnoController extends Controller
         $alumnos=Alumno::Paginate(5);
         $accion='D';
         $txtbtn='confirmar la eliminacion';
+        $carreras= [Carrera::find($alumno->idCarrera)];
+       
         $des='disabled';
-        return view("Alumnos2.frm",compact('alumnos','alumno','accion','txtbtn','des'));
+        return view("Alumnos2.frm",compact('alumnos','alumno','accion','txtbtn','des','carreras'));
     }
 
   
     public function edit(Alumno $alumno)
-    {   
-        
-        $alumnos=Alumno::Paginate(5);
-        $accion='E';
-        $txtbtn='actualizar';
-        $des='';
-        return view("Alumnos2.frm",compact('alumnos','alumno','accion','txtbtn','des'));
-    }
+{   
+    // Obtener todas las carreras para mostrarlas en el dropdown
+    $carreras = Carrera::all();
+    $alumnos = Alumno::paginate(5);
+    
+    $accion = 'E';
+    $txtbtn = 'actualizar';
+    $des = '';
+
+    return view("Alumnos2.frm", compact('alumnos', 'alumno', 'accion', 'txtbtn', 'des', 'carreras'));
+}
+
 
   
     public function update(Request $request, Alumno $alumno)

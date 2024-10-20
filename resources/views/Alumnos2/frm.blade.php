@@ -1,6 +1,5 @@
 @extends('plantillas/plantilla2')
 
-
 {{-- CONTENIDO1 --}}
 {{-- SI LE QUITO EL 1 SE UITA LA TABLA Y SE PONE EL INSERTAR  --}}
 @section('contenido1')
@@ -20,7 +19,7 @@
 
   @elseif ($accion == 'E')
   <h1>EDITANDO FRM</h1> 
-  <form action="{{route('Alumnos2.update',$alumno->id)}}" method="POST">
+  <form action="{{route('Alumnos2.update',$alumno->noctrl)}}" method="POST">
 
     @elseif ($accion=='D')
     <h1>PARA ELIMINAR</h1> 
@@ -91,6 +90,17 @@
         @enderror
         </div>
       </div>
+
+      <select name="idCarrera" id="idCarrera">
+        @foreach ($carreras as $carrera)
+            <option value="{{$carrera->idCarrera}}"
+                @if($carrera->idCarrera == $alumno->idCarrera) selected @endif>
+                {{$carrera->nombreCarrera}}
+            </option>
+        @endforeach
+    </select>
+    
+      
     <button type="submit" class="btn btn-primary">{{$txtbtn}}</button>
     
   </form>

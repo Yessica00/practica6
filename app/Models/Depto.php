@@ -9,7 +9,32 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Depto extends Model
 {
     /** @use HasFactory<\Database\Factories\DeptoFactory> */
+    use HasFactory;
     public function carreras(): HasMany{
-        return $this->hasMany(Carrera::class);
+        return $this->hasMany(Carrera::class,'idDepto');
     }
-}
+     // Definir la clave primaria
+     protected $primaryKey= 'idDepto'; 
+     protected $casts = ['idDepto'=>'string'];
+     public $incrementing = false;
+ 
+     // Agrega los campos que se pueden asignar masivamente, incluyendo idDepto
+     protected $fillable = [
+         'idDepto',  // Asegúrate de incluir este campo aquí
+         'nombreDepto',
+         'nombreMediano',
+         'nombreCorto',
+     ];
+ }
+
+
+ 
+
+   
+
+   
+   
+   
+
+   
+  

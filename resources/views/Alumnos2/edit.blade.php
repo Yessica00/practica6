@@ -11,7 +11,7 @@
 {{-- CONTENIDO2 --}}
 @section('contenido2')
 <h1>Editando</h1>
-<form action="{{route('Alumnos2.update',$alumno->id)}}" method="POST">
+<form action="{{route('Alumnos2.update',$alumno->noctrl)}}" method="POST">
   @csrf
    
 
@@ -54,6 +54,14 @@
                 Femenino
             </label>
         </div>
+
+        <select name="idCarrera" id="idCarrera">
+          @foreach ($carreras as $carrera)
+              <option value="{{$carrera->idCarrera}}">
+                {{$carrera->nombreCarrera}}
+              </option>
+          @endforeach
+        </select>
          
     <button type="submit" class="btn btn-primary">Actualizar</button>
     

@@ -23,7 +23,7 @@
   <form action="{{route('Plazas.store')}}" method="POST">
   @elseif ($accion == 'E')
   <h1>EDITANDO FRM</h1> 
-  <form action="{{route('Plazas.update',$plaza->id)}}" method="POST">
+  <form action="{{route('Plazas.update',$plaza->idPlaza)}}" method="POST">
 
     @elseif ($accion=='D')
     <h1>PARA ELIMINAR</h1> 
@@ -32,7 +32,7 @@
   @endif
   
   @csrf
-    <div class="row mb-3">
+    {{-- <div class="row mb-3">
       <label for="idPlaza" class="col-sm-3 col-form-label">Id Plaza</label>
       <div class="col-sm-9">
         <input type="text" class="form-control" id="idPlaza" name="idPlaza" value="{{old('idPlaza',$plaza->idPlaza)}}" {{$des}}>
@@ -40,7 +40,7 @@
         <p class="text-danger">Error en: {{$message}}</p>
         @enderror
       </div>
-    </div>
+    </div> --}}
     
     <div class="row mb-3">
       <label for="nombrePlaza" class="col-sm-3 col-form-label">Nombre</label>

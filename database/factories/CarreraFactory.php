@@ -22,9 +22,10 @@ class CarreraFactory extends Factory
             'nombreCarrera'=>$titulo,
             'nombreMediano'=>fake()->lexify(str_repeat("?",15)),
             'nombreCorto'=>substr($titulo,0,5),
-            //FK
-          
 
+            // agg este
+            // 'idDepto' => Depto::factory(),
+            
         ];
     }
 }

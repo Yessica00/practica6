@@ -34,15 +34,15 @@
 <body>
   <div class="d-flex">
     <nav class="nav flex-column bg-light p-3" style="width: 200px; height: 100vh;">
-        <a class="nav-link active" href="#">Periodos</a>
+        <a class="nav-link" href="{{route ('Periodos.index')}}">Periodos</a>
         <a class="nav-link" href="{{ route('Plazas.index') }}">Plazas</a>
         <a class="nav-link" href="{{ route('Puestos.index') }}">Puestos</a>
         <a class="nav-link" href="{{route ('Alumnos2.index')}}">Alumnos</a>
+        <a class="nav-link" href="{{route ('Deptos.index')}}">Deptos.</a>
+        <a class="nav-link" href="{{route ('Carreras.index')}}">Carreras</a>
+        <a class="nav-link" href="{{route ('Reticulas.index')}}">Retículas</a>
+        <a class="nav-link" href="{{route ('Materias.index')}}">Materias</a>
         <a class="nav-link" href="#">Personal</a>
-        <a class="nav-link" href="">Deptos.</a>
-        <a class="nav-link" href="#">Carreras</a>
-        <a class="nav-link" href="#">Retículas</a>
-        <a class="nav-link" href="#">Materias</a>
        
     </nav>
 
