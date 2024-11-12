@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('deptos', function (Blueprint $table) {
             $table->String('idDepto',20)         ->primary();
-            $table->String('nombreDepto',100)   ->unique();
-            $table->String('nombreMediano',15)  ->unique();
-            $table->String('nombreCorto',5)     ->unique();
+            $table->String('nombreDepto',100)   ;
+            $table->String('nombreMediano',15) ;
+            $table->String('nombreCorto',5)    ;
             $table->timestamps();
         });
     }

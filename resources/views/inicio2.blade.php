@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CATALGOS</title>
+    <title>Documentos</title>
     {{-- vite sirve el boostrap --}}
     @vite(['resources/js/app.js'])
     
@@ -23,7 +23,7 @@
             @yield("contenido1")
 
             @empty($__env->yieldContent('contenido1'))
-            <p class="center-text">BIENVENIDOS A MI PAGINA</p>
+            
             @endempty
           </div>
         </div>
