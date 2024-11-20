@@ -19,6 +19,7 @@ return new class extends Migration
             
             $table->foreign('idCarrera')->references('idCarrera')->on('carreras');
             $table->timestamps();
+
         });
     }
 

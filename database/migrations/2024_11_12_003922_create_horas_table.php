@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('deptos', function (Blueprint $table) {
-            $table->String('idDepto',20)         ->primary();
-            $table->String('nombreDepto',100)   ;
-            $table->String('nombreMediano',15) ;
-            $table->String('nombreCorto',5)    ;
+        Schema::create('horas', function (Blueprint $table) {
+            $table->string('idHora')->primary();
+            $table->time('horaIni')->unique();
+            $table->time('horaFin')->unique();
+            
             $table->timestamps();
         });
     }
@@ -25,8 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('deptos');
+        Schema::dropIfExists('horas');
     }
 };
-
-

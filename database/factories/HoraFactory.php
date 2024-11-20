@@ -24,5 +24,7 @@ class HoraFactory extends Factory
             'horaIni' => $horaInicio,
             'horaFin' => $horaFin,
         ];
+
     }
 }
+

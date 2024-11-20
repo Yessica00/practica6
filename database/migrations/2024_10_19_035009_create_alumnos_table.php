@@ -6,10 +6,13 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-  
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
         Schema::create('alumnos', function (Blueprint $table) {
+            
             $table->string('noctrl', 8)->primary();
             $table->String('nombre',50);
             $table->String('apellidoP',50);

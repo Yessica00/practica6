@@ -91,6 +91,7 @@
                 <li><a class="dropdown-item" href="{{route('PersonalPlazas.index')}}">Personal Plaza</a></li>
                 <li><a class="dropdown-item" href="{{route('Personal.index')}}">Personal</a></li>
                 <li><a class="dropdown-item" href="{{route('Edificios.index')}}">Edificios</a></li>
+                <li><a class="dropdown-item" href="{{route('Grupo.index')}}">Grupos</a></li>
                 <li><a class="dropdown-item" href="{{route('Lugares.index')}}">Lugares</a></li>
             </ul>
         </li>

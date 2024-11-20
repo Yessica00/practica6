@@ -17,6 +17,7 @@ return new class extends Migration
             $table->String('tipo',200);
 
             $table->timestamps();
+
         });
     }
 

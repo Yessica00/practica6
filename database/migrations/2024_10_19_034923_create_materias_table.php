@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('materias', function (Blueprint $table) {
-            $table->string('idMateria',5)->primary();
+            $table->string('idMateria',10)->primary();
             $table->string('nombreMateria',200)->nullable();
             $table->string('nivel',1)->nullable();
             $table->string('nombreMediano',25)->nullable();
@@ -23,9 +23,13 @@ return new class extends Migration
             $table->string('idReticula',15);
             $table->foreign('idReticula')->references('idReticula')->on('reticulas');
             $table->timestamps();
+
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
         Schema::dropIfExists('materias');

@@ -3,6 +3,8 @@
 use App\Models\PersonalPlaza;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DeptoController;
+use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\LugarController;
 use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PuestoController;
@@ -11,11 +13,11 @@ use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EdificioController;
-use App\Http\Controllers\LugarController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ReticulaController;
 use App\Http\Controllers\PersonalPlazaController;
 use App\Http\Controllers\MateriaAbiertaController;
+use App\Http\Controllers\MateriasAbiertaController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -277,12 +279,21 @@ Route::get('/Lugares.show/{lugar}', [LugarController::class, 'show'])->name('Lug
 Route::post('/Lugares.destroy/{lugar}', [LugarController::class, 'destroy'])->name('Lugares.destroy');// DESRTOY
 Route::post('/Lugares.update/{lugar}', [LugarController::class, 'update'])->name('Lugares.update');//UPDATE
 
+///////////////////
 
+Route::get('/Grupos.index', [GrupoController::class, 'index'])->name('Grupo.index');    
+Route::get('/Grupos.create', [GrupoController::class, 'create'])->name('Grupo.create');
+Route::post('/Grupos.store', [GrupoController::class, 'store'])->name('Grupo.store');       
+Route::get('/Grupos.ediar/{personal}', [GrupoController::class, 'edit'])->name('Grupo.editar');      
+Route::get('/Grupos.ver/{personal}', [GrupoController::class, 'show'])->name('Grupo.ver');     
+Route::post('/Grupos.eliminar/{personal}', [GrupoController::class, 'destroy'])->name('Grupo.eliminar');
+Route::post('/Grupos.update/{personal}', [GrupoController::class, 'update'])->name('Grupo.update');
+Route::resource('/Grupo.index', GrupoController::class);
 
     //TUTORIAS
 
-    Route::get('/MateriasA.index', [MateriaAbiertaController::class, 'index'])->name('MateriasA.index');       // INDEX
-       
+    Route::get('/MateriasA.index', [MateriasAbiertaController::class, 'index'])->name('MateriasA.index');       // INDEX
+    Route::resource('MateriasA', MateriasAbiertaController::class);
 
         Route::get('/capacitacion',function (){
             return view('capacitacion');

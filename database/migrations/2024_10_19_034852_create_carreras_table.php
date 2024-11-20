@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('carreras', function (Blueprint $table) {
             $table->string('idCarrera',15)->primary();
-            $table->String('nombreCarrera',200);
-            $table->String('nombreMediano',50);
-            $table->String('nombreCorto',5);
+            $table->String('nombreCarrera',200)->unique();
+            $table->String('nombreMediano',50)->unique();
+            $table->String('nombreCorto',5)->unique();
             //FK
             $table->string('idDepto',20);
             $table->foreign('idDepto')->references('idDepto')->on('deptos');

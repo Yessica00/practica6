@@ -30,7 +30,10 @@ class Carrera extends Model
     protected $casts = ['idCarrera'=>'string']; 
     public $incrementing = false; //
 
-  
+    public function reticulas(): HasMany
+    {
+        return $this->hasMany(Reticula::class, 'idCarrera');
+    }
 
    
 }
