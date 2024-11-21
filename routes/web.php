@@ -9,6 +9,7 @@ use App\Http\Controllers\PlazaController;
 use App\Http\Controllers\AlumnoController;
 use App\Http\Controllers\PuestoController;
 use App\Http\Controllers\CarreraController;
+use App\Http\Controllers\HorarioController;
 use App\Http\Controllers\MateriaController;
 use App\Http\Controllers\PeriodoController;
 use App\Http\Controllers\ProfileController;
@@ -37,7 +38,41 @@ Route::get('/contactanos',function (){
     return view('contactanos');
 })->name('contactanos');
 
+Route::get('/form',function (){
+    return view('form');
+})->name('form');
+Route::get('/pagos',function (){
+    return view('pagos');
+})->name('pagos');
 
+
+Route::get('/turno', function () {
+    return view('seleccionar-turno');
+});
+Route::get('/turno', function () {
+    return view('turno');
+})->name('seleccionarTurno');
+
+Route::get('/turnoa', function () {
+    return view('turnoa');
+})->name('seleccionarTurnoa');
+
+
+Route::get('/seleccionar-carrera', function () {
+    return view('seleccionarCarrera');
+})->name('seleccionarCarrera');
+
+Route::get('/seleccionar-grupo', function () {
+    return view('seleccionarGrupo');
+})->name('seleccionarGrupo');
+
+Route::get('/ver-materias', function () {
+    return view('verMaterias');
+})->name('verMaterias');
+
+Route::get('/inscribirse', function () {
+    return view('confirmacionInscripcion');
+})->name('inscribirse');
 
 // INICIO 2
 Route::get('/inicio2', function () {
@@ -109,6 +144,7 @@ Route::get('/inicio2', function () {
             return view('capacitacion');
         })->middleware(['auth', 'verified'])->name('capacitacion');
 
+        
         Route::get('/asesoria',function (){
             return view('asesoria');
         })->middleware(['auth', 'verified'])->name('asesoria');
