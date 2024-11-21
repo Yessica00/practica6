@@ -1,9 +1,10 @@
-<ul></ul>
+@isset($mesaje)
+    
 
-@isset($mensaje)
-    <p>{{ $mensaje }}</p>
+<p>{{$mensaje}}</p>
 @endisset
-
+    
+    {{--  --}}
    <div
     class="table-responsive-md"
    >
@@ -39,8 +40,8 @@
                     <td>{{ $grupo->descripcion }}</td>
                     <td>{{ $grupo->maxAlumnos }}</td>
                     <td>{{ $grupo->fecha }}</td>
-                   
-                    
+                    <td>{{ $grupo->periodo->periodo}}</td>
+                    <td>{{ $grupo->materia->nombreMateria}}</td>
                     <td>{{ optional($grupo->personal)->nombre ?? 'Sin Asignar' }}</td>
                     <td></td>
 
@@ -73,8 +74,8 @@
         <tbody class="table-group-divider">
             @foreach ($horarios as $grupo)
                 <tr class="">
-                <td scope="row">{{ $grupo->grupo}}</td>
-                    <td scope="row">{{ $grupo->lugar}}</td>
+                <td scope="row">{{ $grupo->grupo->grupo }}</td>
+                    <td scope="row">{{ $grupo->lugar->nombreCorto }}</td>
                 
                     <td>{{ $grupo->dia }}</td>
                     <td>{{ $grupo->hora }}</td>
