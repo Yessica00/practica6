@@ -102,7 +102,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="horariosDropdown" role="button">Horarios</a>
             <ul class="dropdown-menu dropdown-menu-horizontal" aria-labelledby="horariosDropdown">
                 <li><a class="dropdown-item" href="#">Docentes</a></li>
-                <li><a class="dropdown-item" href="{{route('seleccionarTurnoa')}}">Alumnos</a></li>
+                <li><a class="dropdown-item" href="{{route('turnoa')}}">Alumnos</a></li>
                 <li><a class="dropdown-item" href="{{route('form')}}">Documentacion de Alumnos</a></li>
                 <li><a class="dropdown-item" href="{{route('pagos')}}">Pago Del Semestre</a></li>
             </ul>
