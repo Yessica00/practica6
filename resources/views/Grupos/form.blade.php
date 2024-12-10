@@ -337,6 +337,7 @@
                 @endforeach
             </div>
         </div>
+        
 
         <!-- Columna derecha: Tabla de horarios -->
         <div style="flex: 1;">

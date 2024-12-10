@@ -176,15 +176,13 @@
     <div class="content">
         <div class="form-container">
             <h1>Agregar Pago</h1>
-            <form method="POST" action="/agregar-pago" enctype="multipart/form-data">
+            <form method="POST" action="{{route('pagos.store')}}" enctype="multipart/form-data">
                 <!-- CSRF Token -->
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                <!-- Número de Control -->
                 <div class="form-group">
-                    <label for="numero_control" class="form-label"><i class="fa-solid fa-id-card"></i> Número de Control</label>
-                    <input type="text" name="numero_control" id="numero_control" class="form-control" 
-                           placeholder="Ingresa tu número de control" required>
+                    <label for="noctrl" class="form-label"><i class="fa-solid fa-user"></i> Número de Control</label>
+                    <input type="text" name="noctrl" id="noctrl" class="form-control" placeholder="Ingresa el número de control del alumno" required>
                 </div>
 
                 <!-- Tipo de Pago -->

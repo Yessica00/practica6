@@ -5,45 +5,52 @@ namespace App\Http\Controllers;
 use App\Models\Carrera;
 use App\Models\Materia;
 use App\Models\Periodo;
-use Illuminate\Http\Request;
 use App\Models\MateriasAbierta;
+use Illuminate\Http\Request;
 
 class MateriasAbiertaController extends Controller
 {
-    public $idCarrera;
-    public $idPeriodo;
+    protected $idCarrera;
+    protected $idPeriodo;
 
     public function __construct()
     {
-        // Obtener los valores de filtro de la request o de la sesión
-        $this->idCarrera = request()->idcarrera ?? session('idCarrera', -1);
-        $this->idPeriodo = request()->idperiodo ?? session('idPeriodo', -1);
+        // Obtener valores de filtros de la request o sesión
+        $this->idCarrera = request('idCarrera', session('idCarrera', -1));
+        $this->idPeriodo = request('idPeriodo', session('idPeriodo', -1));
 
-        // Actualizar la sesión
+        // Actualizar los valores en sesión
         session(['idCarrera' => $this->idCarrera, 'idPeriodo' => $this->idPeriodo]);
     }
 
     public function index()
     {
-        // Obtener las carreras y períodos para los select
+        // Obtener carreras y periodos para los filtros
         $carreras = Carrera::all();
         $periodos = Periodo::all();
 
-        // Cargar las materias de la carrera seleccionada
-        $materiasPorSemestre = collect(); // Colección vacía por defecto
+        // Obtener materias agrupadas por semestre según la carrera seleccionada
+        $materiasPorSemestre = collect();
         if ($this->idCarrera != -1) {
             $materiasPorSemestre = Materia::whereHas('reticula', function ($query) {
                 $query->where('idCarrera', $this->idCarrera);
             })->get()->groupBy('semestre');
         }
 
-        return view('MateriasA.index', [
-            'carreras' => $carreras,
-            'periodos' => $periodos,
-            'materiasPorSemestre' => $materiasPorSemestre,
-            'idCarrera' => $this->idCarrera,
-            'idPeriodo' => $this->idPeriodo,
-        ]);
+        // Materias ya abiertas para la combinación actual de carrera y periodo
+        $materiasAbiertas = MateriasAbierta::where('idCarrera', $this->idCarrera)
+            ->where('idPeriodo', $this->idPeriodo)
+            ->pluck('idMateria')
+            ->toArray();
+
+            return view('MateriasA.index', [
+                'carreras' => $carreras,
+                'periodos' => $periodos,
+                'materiasPorSemestre' => $materiasPorSemestre,
+                'materiasAbiertas' => $materiasAbiertas,
+                'idCarrera' => $this->idCarrera, // Aseguramos que esta variable exista
+                'idPeriodo' => $this->idPeriodo, // Aseguramos que esta variable exista
+            ]);
     }
 
     public function store(Request $request)
@@ -57,7 +64,7 @@ class MateriasAbiertaController extends Controller
             ]);
         }
 
-        // Eliminar materias si se solicita
+        // Eliminar materias si se seleccionó la opción
         if ($request->eliminar && $request->eliminar != 'NOELIMINAR') {
             MateriasAbierta::where([
                 'idPeriodo' => $this->idPeriodo,

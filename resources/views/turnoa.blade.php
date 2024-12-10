@@ -39,24 +39,18 @@
 <body>
     <div class="content">
         <h1 class="text-center mb-4">Verificación de Alumno</h1>
-
-        <!-- Barra de búsqueda (solo visual) -->
-        <form class="d-flex mb-4">
-            <input class="form-control me-2" type="search" placeholder="Buscar Número de Control" aria-label="Buscar">
-            <button class="btn btn-outline-primary" type="submit" disabled>Buscar</button>
-        </form>
-
-        <!-- Datos Estáticos del Alumno -->
+    
+        <!-- Información del Alumno -->
         <div>
             <h4>Información del Alumno</h4>
-            <p><strong>Número de Control:</strong> 12345</p>
-            <p><strong>Nombre:</strong> Juan Pérez</p>
+            <p><strong>Número de Control:</strong> {{ $datosAlumno['numero_control'] }}</p>
+            <p><strong>Nombre:</strong> {{ $datosAlumno['nombre'] }}</p>
         </div>
-
+    
         <!-- Formulario de verificación -->
         <form method="get" action="/turno">
-            @csrf <!-- Este campo es obligatorio si planeas usarlo con Laravel -->
-
+            @csrf
+    
             <!-- Tabla de pagos -->
             <div class="mt-4">
                 <h5>Estado de Pagos</h5>
@@ -71,16 +65,13 @@
                         <tr>
                             <td>Pago Realizado</td>
                             <td>
-                                <select name="estado_pago" class="form-select" required>
-                                    <option value="no">No</option>
-                                    <option value="si">Sí</option>
-                                </select>
+                                {{ $datosAlumno['pagoRealizado'] ? 'Sí' : 'No' }}
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
+    
             <!-- Tabla de documentación -->
             <div class="mt-4">
                 <h5>Estado de Documentación</h5>
@@ -95,23 +86,21 @@
                         <tr>
                             <td>Documentación Completa</td>
                             <td>
-                                <select name="estado_doc" class="form-select" required>
-                                    <option value="no">No</option>
-                                    <option value="si">Sí</option>
-                                </select>
+                                {{ $datosAlumno['documentosCompletos'] ? 'Sí' : 'No' }}
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-
+    
             <!-- Botón para continuar -->
             <div class="text-center mt-4">
-                <button type="submit" class="btn btn-primary w-100" formaction="{{ route('seleccionarCarrera') }}">Continuar a Turnos</button>
+                <button type="submit" class="btn btn-primary w-100" 
+                    formaction="{{ route('seleccionarCarrera') }}" 
+                    @if(!$datosAlumno['documentosCompletos'] || !$datosAlumno['pagoRealizado']) disabled @endif>
+                    Continuar a Turnos
+                </button>
             </div>
-            
         </form>
     </div>
-</body>
-</html>
-@endsection
+    @endsection

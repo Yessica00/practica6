@@ -5,22 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Subir Documentos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> <!-- Librería de íconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(145deg, #ffffff, #e8eff1); /* Fondo elegante */
+            background: linear-gradient(145deg, #ffffff, #e8eff1);
             font-family: 'Poppins', sans-serif;
             color: #333;
             margin: 0;
         }
 
-        /* Menú fijo */
         .navbar {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            z-index: 9999; /* Mantén el menú por encima del contenido */
+            z-index: 9999;
             background-color: #343a40;
             padding: 10px;
         }
@@ -33,13 +32,12 @@
             color: #007bff;
         }
 
-        /* Contenedor principal */
         .content-container {
-            margin-top: 80px; /* Espacio para que el formulario no se superponga al menú */
+            margin-top: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: calc(100vh - 80px); /* Resta el tamaño del menú para ajustar la altura */
+            min-height: calc(100vh - 80px);
         }
 
         .form-container {
@@ -116,7 +114,6 @@
             transform: translateY(1px);
         }
 
-        /* Animación de entrada */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -128,7 +125,6 @@
             }
         }
 
-        /* Pie de página */
         .footer {
             text-align: center;
             margin-top: 20px;
@@ -147,17 +143,18 @@
     </style>
 </head>
 <body>
-    <!-- Incluir el menú -->
     @include('menu2')
 
-    <!-- Contenido principal -->
     <div class="content-container">
         <div class="form-container">
             <h1>Subir Documentos</h1>
-            <form method="POST" action="/subir-documentos" enctype="multipart/form-data">
-                <!-- Laravel: Asegúrate de incluir el token de CSRF -->
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                
+            <form method="POST" action="{{ route('documentos.store') }}" enctype="multipart/form-data">
+                @csrf
+                <div class="mb-4 position-relative">
+                    <label for="noctrl" class="form-label"><i class="fa-solid fa-id-badge"></i> Número de Control</label>
+                    <input type="text" name="noctrl" id="noctrl" class="form-control" required>
+                    <i class="fa-solid fa-file-upload input-icon"></i>
+                </div>
                 <div class="mb-4 position-relative">
                     <label for="curp" class="form-label"><i class="fa-solid fa-id-card"></i> CURP</label>
                     <input type="file" name="curp" id="curp" class="form-control" required>
@@ -179,9 +176,7 @@
                 <button type="submit" class="btn btn-primary w-100">Subir Documentos</button>
             </form>
 
-            <div class="footer">
-               
-            </div>
+            <div class="footer"></div>
         </div>
     </div>
 </body>

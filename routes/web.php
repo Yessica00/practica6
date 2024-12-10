@@ -2,6 +2,7 @@
 
 use App\Models\PersonalPlaza;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PagoController;
 use App\Http\Controllers\DeptoController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\LugarController;
@@ -16,9 +17,13 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EdificioController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ReticulaController;
+use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\Grupo21330Controller;
+use App\Http\Controllers\VerificacionController;
 use App\Http\Controllers\PersonalPlazaController;
 use App\Http\Controllers\MateriaAbiertaController;
 use App\Http\Controllers\MateriasAbiertaController;
+use App\Http\Controllers\GrupoHorario21330Controller;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -38,12 +43,19 @@ Route::get('/contactanos',function (){
     return view('contactanos');
 })->name('contactanos');
 
-Route::get('/form',function (){
-    return view('form');
-})->name('form');
-Route::get('/pagos',function (){
-    return view('pagos');
-})->name('pagos');
+
+// Mostrar el formulario
+Route::get('/form', [DocumentoController::class, 'create'])->name('form');
+
+// Procesar los datos enviados desde el formulario
+Route::post('/form', [DocumentoController::class, 'store'])->name('documentos.store');
+
+
+Route::get('/pagos', [PagoController::class, 'create'])->name('pagos');
+
+Route::post('/pagos', [PagoController::class, 'store'])->name('pagos.store');
+
+
 
 
 Route::get('/turno', function () {
@@ -53,9 +65,8 @@ Route::get('/turno', function () {
     return view('turno');
 })->name('seleccionarTurno');
 
-Route::get('/turnoa', function () {
-    return view('turnoa');
-})->name('seleccionarTurnoa');
+Route::get('/turnoa/{noctrl}', [VerificacionController::class, 'verificarAlumno'])->name('seleccionarTurnoa');
+
 
 
 Route::get('/seleccionar-carrera', function () {
@@ -86,7 +97,7 @@ Route::get('/inicio2', function () {
     })->middleware(['auth', 'verified'])->name('catalogo');
 
 
-    
+
         Route::get('/periodo',function (){
             return view('periodo');
         })->middleware(['auth', 'verified'])->name('periodo');
@@ -325,7 +336,22 @@ Route::get('/Grupos.ver/{personal}', [GrupoController::class, 'show'])->name('Gr
 Route::post('/Grupos.eliminar/{personal}', [GrupoController::class, 'destroy'])->name('Grupo.eliminar');
 Route::post('/Grupos.update/{personal}', [GrupoController::class, 'update'])->name('Grupo.update');
 Route::resource('/Grupo.index', GrupoController::class);
+/////////////////////////
 
+// Route::get('/Grupos21330', [Grupo21330Controller::class, 'index'])->name('Grupos21330.index');    
+// Route::get('/Grupos21330/create', [Grupo21330Controller::class, 'create'])->name('Grupos21330.create');
+// Route::post('/Grupos21330', [Grupo21330Controller::class, 'store'])->name('Grupos21330.store');       
+// Route::get('/Grupos21330/edit/{grupo21330}', [Grupo21330Controller::class, 'edit'])->name('Grupos21330.edit');      
+// Route::get('/Grupos21330/show/{grupo21330}', [Grupo21330Controller::class, 'show'])->name('Grupos21330.show');     
+// Route::delete('/Grupos21330/destroy/{grupo21330}', [Grupo21330Controller::class, 'destroy'])->name('Grupos21330.destroy');
+// Route::post('/Grupos21330/update/{grupo21330}', [Grupo21330Controller::class, 'update'])->name('Grupos21330.update');
+// Route::get('/Grupos21330/edit/{grupo21330}', [Grupo21330Controller::class, 'edit'])->name('Grupos21330.edit');
+
+// // Esta ruta es innecesaria porque ya estás usando las rutas de recurso
+// // Route::resource('/Grupos21330', Grupo21330Controller::class);
+// Route::resource('GrupoHorario21330', GrupoHorario21330Controller::class);
+// Route::get('/GrupoHorario21330/create', [GrupoHorario21330Controller::class, 'create'])->name('GrupoHorario21330.create');
+// Route::post('/GrupoHorario21330', [GrupoHorario21330Controller::class, 'store'])->name('GrupoHorario21330.store');       
     //TUTORIAS
 
     Route::get('/MateriasA.index', [MateriasAbiertaController::class, 'index'])->name('MateriasA.index');       // INDEX

@@ -92,21 +92,24 @@
                 <li><a class="dropdown-item" href="{{route('Personal.index')}}">Personal</a></li>
                 <li><a class="dropdown-item" href="{{route('Edificios.index')}}">Edificios</a></li>
                 <li><a class="dropdown-item" href="{{route('Grupo.index')}}">Grupos</a></li>
+                {{-- <li><a class="dropdown-item" href="{{route('Grupos21330.index')}}">GruposE</a></li>
+                <li><a class="dropdown-item" href="{{route('GrupoHorario21330.index')}}">GruposEH</a></li> --}}
                 <li><a class="dropdown-item" href="{{route('Lugares.index')}}">Lugares</a></li>
                
             </ul>
         </li>
 
-        <!-- Horarios Dropdown (Horizontal) -->
         <li class="nav-item dropdown" role="presentation">
             <a class="nav-link dropdown-toggle" href="#" id="horariosDropdown" role="button">Horarios</a>
             <ul class="dropdown-menu dropdown-menu-horizontal" aria-labelledby="horariosDropdown">
                 <li><a class="dropdown-item" href="#">Docentes</a></li>
-                <li><a class="dropdown-item" href="{{route('seleccionarTurnoa')}}">Alumnos</a></li>
-                <li><a class="dropdown-item" href="{{route('form')}}">Documentacion de Alumnos</a></li>
-                <li><a class="dropdown-item" href="{{route('pagos')}}">Pago Del Semestre</a></li>
+{{-- <li><a class="dropdown-item" href="{{ route('seleccionarTurnoa', ['noctrl' => $datosAlumno['numero_control']]) }}">Alumnos</a></li> --}}
+                <li><a class="dropdown-item" href="{{ route('documentos.store') }}">Documentacion de Alumnos</a></li>
+                <li><a class="dropdown-item" href="{{ route('pagos.store') }}">Pago Del Semestre</a></li>
             </ul>
         </li>
+        
+        
 
         <!-- Proyectos Ind. Dropdown (Horizontal) -->
         <li class="nav-item dropdown" role="presentation">

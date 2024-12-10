@@ -1,113 +1,84 @@
+@extends('plantillas.plantilla2')
 
-@extends('plantillas/plantilla2')
-
-{{-- CONTENIDO1 --}}
-{{-- SI LE QUITO EL 1 SE UITA LA TABLA Y SE PONE EL INSERTAR  --}}
-
-{{-- CONTENIDO2 --}}
 @section('contenido2')
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <h3 class="text-center mb-4">Apertura de Materias</h3>
-    
-                <!-- Filtro de Periodo y Carrera -->
-                <form action="{{ route('MateriasA.index') }}" method="get">
-                    <div class="row">
-                        <!-- Filtro de Periodo -->
-                        <div class="col-md-6 mb-3">
-                            <label for="idperiodo" class="font-weight-bold">Selecciona un Periodo</label>
-                            <select name="idPeriodo" id="idPeriodo" class="form-control" onchange="this.form.submit()">
-                                @foreach ($periodos as $periodo)
-                                    <option value="{{ $periodo->idPeriodo }}" @if($periodo->id == session('periodo_id')) selected @endif>
-                                        {{ $periodo->periodo }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-    
-                        <!-- Filtro de Carrera -->
-                        <div class="col-md-6 mb-3">
-                            <label for="idcarrera" class="font-weight-bold">Selecciona una Carrera</label>
-                            <select name="idCarrera" id="idCarrera" class="form-control" onchange="this.form.submit()">
-                                @foreach ($carreras as $carr)
-                                    <option value="{{ $carr->idCarrera }}" @if($carr->id == session('carrera_id')) selected @endif>
-                                        {{ $carr->nombreCarrera }}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                </form>
+<div class="container">
+    <h3 class="text-center mb-4">Apertura de Materias</h3>
+
+    <!-- Filtros -->
+    <form method="GET" action="{{ route('MateriasA.index') }}" class="mb-4">
+        <div class="row">
+            <!-- Filtro de Periodo -->
+            <div class="col-md-6">
+                <label for="idPeriodo" class="form-label">Selecciona un Periodo</label>
+                <select name="idPeriodo" id="idPeriodo" class="form-control" onchange="this.form.submit()">
+                    <option value="-1">-- Seleccionar --</option>
+                    @foreach ($periodos as $periodo)
+                        <option value="{{ $periodo->idPeriodo }}" {{ $periodo->idPeriodo == $idPeriodo ? 'selected' : '' }}>
+                            {{ $periodo->periodo }}
+                        </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <!-- Filtro de Carrera -->
+            <div class="col-md-6">
+                <label for="idCarrera" class="form-label">Selecciona una Carrera</label>
+                <select name="idCarrera" id="idCarrera" class="form-control" onchange="this.form.submit()">
+                    <option value="-1">-- Seleccionar --</option>
+                    @foreach ($carreras as $carrera)
+                        <option value="{{ $carrera->idCarrera }}" {{ $carrera->idCarrera == $idCarrera ? 'selected' : '' }}>
+                            {{ $carrera->nombreCarrera }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
         </div>
-    
-        <!-- Contenedor de materias por semestre -->
-        <div class="row mt-5">
-            @for ($semestre = 1; $semestre <= 9; $semestre++)
-                @php
-                    // Verificar si existen retículas y materias antes de acceder
-                    $materiasSemestre = isset($carrera[0]) && isset($carrera[0]->reticulas[0]) 
-                                        ? $carrera[0]->reticulas[0]->materias->where('semestre', $semestre) 
-                                        : collect();
-                @endphp
-    
-                @if ($materiasSemestre->isNotEmpty())
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <!-- Formulario de selección de materias -->
-                        <form action="{{ route('MateriasA.store') }}" method="post">
-                            @csrf
-                            <input type="hidden" name="eliminar" id="eliminar" value="NOELIMINAR">
-                            <input type="hidden" name="idperiodo" value="{{ session('periodo_id') }}">
-                            <input type="hidden" name="idcarrera" value="{{ session('carrera_id') }}">
-                            
-                            <!-- Tarjeta de materias del semestre -->
-                            <div class="card">
-                                <div class="card-header text-center bg-primary text-white">
-                                    <h5>Semestre {{ $semestre }}</h5>
-                                </div>
-                                <div class="card-body">
+    </form>
+
+    <!-- Materias -->
+    <div class="row">
+        @if ($materiasPorSemestre->isEmpty())
+            <p class="text-center">No hay materias disponibles para la selección actual.</p>
+        @else
+            @foreach ($materiasPorSemestre as $semestre => $materias)
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Semestre {{ $semestre }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('MateriasA.store') }}">
+                                @csrf
+                                <input type="hidden" name="idPeriodo" value="{{ $idPeriodo }}">
+                                <input type="hidden" name="idCarrera" value="{{ $idCarrera }}">
+                                <input type="hidden" name="eliminar" id="eliminar" value="NOELIMINAR">
+
+                                @foreach ($materias as $materia)
                                     <div class="form-check">
-                                        @foreach ($materiasSemestre as $materia)
-                                            <div class="form-check mb-2">
-                                                <input class="form-check-input" type="checkbox" 
-                                                    name="m{{ $materia->id }}" 
-                                                    value="{{ $materia->id }}" 
-                                                    onchange="enviar(this)"
-                                                    @if ($ma->firstWhere('materia_id', $materia->id)) checked @endif>
-                                                <label class="form-check-label">
-                                                    {{ $materia->nombremateria }}
-                                                </label>
-                                            </div>
-                                        @endforeach
+                                        <input type="checkbox" class="form-check-input" name="m{{ $materia->idMateria }}" 
+                                            value="{{ $materia->idMateria }}" 
+                                            onchange="enviar(this)"
+                                            {{ in_array($materia->idMateria, $materiasAbiertas) ? 'checked' : '' }}>
+                                        <label class="form-check-label">
+                                            {{ $materia->nombreMateria }}
+                                        </label>
                                     </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                @else
-                    <div class="col-md-4 col-sm-6 mb-4">
-                        <!-- Si no hay materias, mostrar un mensaje vacío o diferente -->
-                        <div class="card">
-                            <div class="card-header text-center bg-secondary text-white">
-                                <h5>Semestre {{ $semestre }}</h5>
-                            </div>
-                            <div class="card-body">
-                                <p>No hay materias disponibles para este semestre.</p>
-                            </div>
+                                @endforeach
+
+            
+                            </form>
                         </div>
                     </div>
-                @endif
-            @endfor
-        </div>
+                </div>
+            @endforeach
+        @endif
     </div>
-    
-    <script>
-        // Función para manejar el cambio de estado de las materias
-        function enviar(chbox) {
-            chbox.form.eliminar.value = chbox.checked ? "NOELIMINAR" : chbox.value;
-            chbox.form.submit();
-        }
-    </script>
-    @endsection
-    
+</div>
+
+<script>
+    function enviar(chbox) {
+        chbox.form.eliminar.value = chbox.checked ? "NOELIMINAR" : chbox.value;
+        chbox.form.submit();
+    }
+</script>
+@endsection

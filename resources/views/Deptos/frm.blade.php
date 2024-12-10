@@ -1,7 +1,5 @@
 @extends('plantillas/plantilla2')
 
-{{-- CONTENIDO1 --}}
-{{-- SI LE QUITO EL 1 SE UITA LA TABLA Y SE PONE EL INSERTAR  --}}
 @section('contenido1')
 
     @include('Deptos/tablahtml')
